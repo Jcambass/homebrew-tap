@@ -1,14 +1,13 @@
-name: brew pr-pull
+name: Update bottles after PR merge
 
 on:
-  pull_request_target:
-    types:
-      - labeled
+  pull_request:
 
 jobs:
-  pr-pull:
-    if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
+  update-bottles:
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true && contains(github.event.pull_request.body || '', 'Created by https://github.com/mislav/bump-homebrew-formula-action') && contains(github.event.pull_request.body || '', 'Created by https://github.com/mislav/bump-homebrew-formula-action')
     runs-on: ubuntu-latest
+    needs: test-bot
     permissions:
       actions: read
       checks: read

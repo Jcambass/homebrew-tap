@@ -12,9 +12,9 @@ class Tailhopper < Formula
   end
 
   bottle do
-    root_url "https://github.com/Jcambass/homebrew-tap/releases/download/tailhopper-0.1.1"
-    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "11408807fdad8a16ca9fbb72351579cc395b9d000a9d2cc9102f6ffa4e1ad813"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "852f79a2ef6be497ac4ccc4e6019adcdf0ecb83b0ef3ccd5350626f117a09b55"
+    root_url "https://github.com/Jcambass/homebrew-tap/releases/download/tailhopper-0.1.3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "fb8e3bcab9735f9098dab2e2f6197cabbdeea648abd3794056ac1a66a275dbc1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "18003f648c07413e52d6a103176a5e5d2e82ccd5732e6b8b0ef90164f3f248ce"
   end
 
   depends_on "go" => :build
