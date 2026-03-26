@@ -19,8 +19,8 @@ jobs:
     permissions:
       actions: read
       checks: read
-      contents: read
-      pull-requests: read
+      contents: write
+      pull-requests: write
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -49,3 +49,15 @@ jobs:
         with:
           name: bottles_${{ matrix.os }}
           path: '*.bottle.*'
+
+  merge:
+    needs: test-bot
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+    - name: Merge Pull Request
+      if: contains(github.event.pull_request.body || '', 'Created by https://github.com/mislav/bump-homebrew-formula-action')
+      run: gh pr merge --admin --merge ${{ github.event.pull_request.number }} --repo ${{ github.repository }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
