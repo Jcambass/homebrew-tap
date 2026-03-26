@@ -1,8 +1,8 @@
 class Tailhopper < Formula
   desc "Use multiple Tailscale tailnets at the same time"
   homepage "https://github.com/jcambass/tailhopper"
-  url "https://github.com/Jcambass/tailhopper/archive/refs/tags/v0.1.3.tar.gz"
-  sha256 "810b039d030ef5d2855fa8a56e8f85e64909b35bb96836ab186fcd4acbbdaa3d"
+  url "https://github.com/Jcambass/tailhopper/archive/refs/tags/v0.1.4.tar.gz"
+  sha256 "fa49ca0b7706dca74253de6c4ba7962747158f8fec9eaee8d09e14e5cda43536"
   license "MIT"
   head "https://github.com/jcambass/tailhopper.git", branch: "main"
 
