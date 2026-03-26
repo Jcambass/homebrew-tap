@@ -27,11 +27,7 @@ class Tailhopper < Formula
     error_log_path var/"log/tailhopper.log"
   end
 
-  test do
-    assert_equal "#{version}\n", shell_output("#{bin}/tailhopper --version")
-  end
-
-  def caveats
+   def caveats
     <<~EOS
       Tailhopper stores its state file at:
         #{var}/tailhopper/tailhopper.json
@@ -47,5 +43,9 @@ class Tailhopper < Formula
 
       Dashboard: http://localhost:8888
     EOS
+  end
+
+  test do
+    assert_equal "#{version}\n", shell_output("#{bin}/tailhopper --version")
   end
 end
