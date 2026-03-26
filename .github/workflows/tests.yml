@@ -20,7 +20,7 @@ jobs:
       actions: read
       checks: read
       contents: read
-      pull-requests: read
+      pull-requests: write
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -49,3 +49,15 @@ jobs:
         with:
           name: bottles_${{ matrix.os }}
           path: '*.bottle.*'
+
+  label:
+    needs: test-bot
+    if: contains(github.event.pull_request.body || '', 'Created by https://github.com/mislav/bump-homebrew-formula-action')
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+    - name: Label Pull Request
+      run: gh pr edit ${{ github.event.pull_request.number }} --add-label pr-pull --repo ${{ github.repository }}
+      env:
+        GH_TOKEN: ${{ secrets.LABELER_TOKEN }}
