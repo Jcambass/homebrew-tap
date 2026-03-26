@@ -11,6 +11,12 @@ class Tailhopper < Formula
     strategy :github_latest
   end
 
+  bottle do
+    root_url "https://github.com/Jcambass/homebrew-tap/releases/download/tailhopper-0.1.1"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:  "11408807fdad8a16ca9fbb72351579cc395b9d000a9d2cc9102f6ffa4e1ad813"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "852f79a2ef6be497ac4ccc4e6019adcdf0ecb83b0ef3ccd5350626f117a09b55"
+  end
+
   depends_on "go" => :build
 
   def install
