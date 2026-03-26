@@ -27,7 +27,7 @@ class Tailhopper < Formula
     error_log_path var/"log/tailhopper.log"
   end
 
-   def caveats
+  def caveats
     <<~EOS
       Tailhopper stores its state file at:
         #{var}/tailhopper/tailhopper.json
