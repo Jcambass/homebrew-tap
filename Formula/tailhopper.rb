@@ -29,19 +29,25 @@ class Tailhopper < Formula
 
   def caveats
     <<~EOS
-      Tailhopper stores its state file at:
-        #{var}/tailhopper/tailhopper.json
+      Once Tailhopper is running, you can access:
+      - The dashboard at http://localhost:#{ENV.fetch("TAILHOPPER_HTTP_PORT", "8888")}
+      - The logs at #{var}/log/tailhopper.log
+      - The state file and state folder at #{var}/tailhopper
+ 
+      To use a custom HTTP port, set the TAILHOPPER_HTTP_PORT environment variable before starting the service:
+        export TAILHOPPER_HTTP_PORT=8080
 
-      Logs are available at:
-        #{var}/log/tailhopper.log
+      To stop Tailhopper:
+        brew services stop tailhopper
 
-      Uninstall does not remove state/log files. To remove them:
-        rm -rf "#{var}/tailhopper" "#{var}/log/tailhopper.log"
-
-      To run on a custom dashboard port:
-        TAILHOPPER_HTTP_PORT=9999 brew services restart tailhopper
-
-      Dashboard: http://localhost:8888
+      To uninstall Tailhopper while keeping state/log files:
+        brew services stop tailhopper
+        brew uninstall tailhopper
+      
+      To uninstall Tailhopper while also removing state/log files:
+        brew services stop tailhopper
+        brew uninstall tailhopper
+        rm -rf "$(brew --prefix)/var/tailhopper" "$(brew --prefix)/var/log/tailhopper.log"
     EOS
   end
 
