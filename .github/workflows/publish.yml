@@ -3,14 +3,11 @@ name: brew pr-pull
 on:
   pull_request_target:
     types:
-      - opened
-      - reopened
-      - synchronize
-      - edited
+      - labeled
 
 jobs:
   pr-pull:
-    if: contains(github.event.pull_request.body || '', 'Created by https://github.com/mislav/bump-homebrew-formula-action')
+    if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
     runs-on: ubuntu-latest
     permissions:
       actions: read
