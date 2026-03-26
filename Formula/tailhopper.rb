@@ -33,7 +33,7 @@ class Tailhopper < Formula
       - The dashboard at http://localhost:#{ENV.fetch("TAILHOPPER_HTTP_PORT", "8888")}
       - The logs at #{var}/log/tailhopper.log
       - The state file and state folder at #{var}/tailhopper
- 
+
       To use a custom HTTP port, set the TAILHOPPER_HTTP_PORT environment variable before starting the service:
         export TAILHOPPER_HTTP_PORT=8080
 
@@ -43,7 +43,7 @@ class Tailhopper < Formula
       To uninstall Tailhopper while keeping state/log files:
         brew services stop tailhopper
         brew uninstall tailhopper
-      
+
       To uninstall Tailhopper while also removing state/log files:
         brew services stop tailhopper
         brew uninstall tailhopper
